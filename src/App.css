@@ -46,3 +46,9 @@
   margin: 5px;
 
 }
+
+.App-Row {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
