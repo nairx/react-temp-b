@@ -8,11 +8,13 @@ export default function App10() {
   const runRef = useRef();
   const wicketRef = useRef();
   const msgRef = useRef();
-  const handleRun = () => {
+  const handleRun = (v) => {
     if (wicket < 10) {
-      setRun(run + 1);
+      setRun(run + v);
       setMsg("Well Done!");
-      runRef.current.style.backgroundColor = "teal";
+      if (v===1) runRef.current.style.backgroundColor = "silver";
+      if (v===4) runRef.current.style.backgroundColor = "teal";
+      if (v===6) runRef.current.style.backgroundColor = "blue";
       wicketRef.current.style.transform = "scale(1)";
       runRef.current.style.transform = "scale(1.1)";
       wicketRef.current.style.backgroundColor = "white";
@@ -39,7 +41,9 @@ export default function App10() {
       <h3>This is App10</h3>
       <div className="App-App10-Row">
         <div className="App-App10-Box" ref={runRef}>
-          <button onClick={handleRun}>Run</button>
+          <button onClick={()=>handleRun(1)}>1</button>
+          <button onClick={()=>handleRun(4)}>4</button>
+          <button onClick={()=>handleRun(6)}>6</button>
           <p>{run}</p>
         </div>
         <div className="App-App10-Box" ref={wicketRef}>
