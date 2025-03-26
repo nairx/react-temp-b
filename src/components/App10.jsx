@@ -5,30 +5,32 @@ export default function App10() {
   const [run, setRun] = useState(0);
   const [wicket, setWicket] = useState(0);
   const [msg, setMsg] = useState("Let's begin the game!");
-  useEffect(() => {
-    if (run > 0 && wicket < 10) {
+
+  const handleRun = () => {
+    if (wicket < 10) {
+      setRun(run + 1);
       setMsg("Well Done!");
     }
-  }, [run]);
-  useEffect(() => {
-    if (wicket === 10) {
-      setMsg("Game Over!");
-    } else if (wicket < 9 && wicket > 0) {
-      setMsg("Better Luck Next Time");
-    } else if (wicket > 10) {
-      setWicket(10);
+  };
+
+  const handleWicket = () => {
+    wicket < 10 && setWicket(wicket + 1);
+    if (wicket < 9) {
+      setMsg("Better luck next time!");
+    } else {
+      setMsg("Game Over");
     }
-  }, [wicket]);
+  };
   return (
     <div className="App-App10-Container">
       <h3>This is App10</h3>
       <div className="App-App10-Row">
         <div className="App-App10-Box">
-          <button onClick={() => setRun(run + 1)}>Run</button>
+          <button onClick={handleRun}>Run</button>
           <p>{run}</p>
         </div>
         <div className="App-App10-Box">
-          <button onClick={() => setWicket(wicket + 1)}>Wicket</button>
+          <button onClick={handleWicket}>Wicket</button>
           <p>{wicket}</p>
         </div>
       </div>
