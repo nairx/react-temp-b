@@ -7,12 +7,14 @@ export default function App10() {
   const [msg, setMsg] = useState("Let's begin the game!");
   const runRef = useRef();
   const wicketRef = useRef();
-  const msgRef = useRef()
+  const msgRef = useRef();
   const handleRun = () => {
     if (wicket < 10) {
       setRun(run + 1);
       setMsg("Well Done!");
-      runRef.current.style.backgroundColor = "yellow";
+      runRef.current.style.backgroundColor = "teal";
+      wicketRef.current.style.transform = "scale(1)";
+      runRef.current.style.transform = "scale(1.1)";
       wicketRef.current.style.backgroundColor = "white";
     }
   };
@@ -22,10 +24,12 @@ export default function App10() {
     if (wicket < 9) {
       setMsg("Better luck next time!");
       runRef.current.style.backgroundColor = "white";
-      wicketRef.current.style.backgroundColor = "yellow";
+      runRef.current.style.transform = "scale(1)";
+      wicketRef.current.style.transform = "scale(1.1)";
+      wicketRef.current.style.backgroundColor = "red";
     } else {
       setMsg("Game Over");
-      msgRef.current.style.backgroundColor = "yellow"
+      msgRef.current.style.backgroundColor = "yellow";
       runRef.current.style.backgroundColor = "white";
       wicketRef.current.style.backgroundColor = "white";
     }
@@ -45,7 +49,10 @@ export default function App10() {
       </div>
       <hr></hr>
       <div className="App-App10-Row">
-        <div className="App-App10-Box" ref={msgRef}> {msg}</div>
+        <div className="App-App10-Box" ref={msgRef}>
+          {" "}
+          {msg}
+        </div>
       </div>
     </div>
   );
